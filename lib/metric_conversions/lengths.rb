@@ -6,7 +6,6 @@ module MetricConversions
     self.to_inches(from)  
   end
 
-  private
   def to_inches(from)
     if(from == "ft")
         self * 12.0
@@ -21,7 +20,7 @@ module MetricConversions
   end
 
   def to_meters(from)
-
+    if(from=="")
   end
 
   def to_feet
@@ -50,3 +49,4 @@ module MetricConversions
 end
 
 (2.class).send(:include, MetricConversions)
+((2.54).class).send(:include, MetricConversions)

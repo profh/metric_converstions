@@ -49,4 +49,4 @@ module MetricConversions
   end
 end
 
-Integer.send :include(MetricConversions)
+(2.class).send(:include, MetricConversions)

@@ -48,9 +48,14 @@ This module was built by <YOUR NAME HERE> and <YOUR NAME HERE>.
 
 
 ### Areas ###
-... notes and explanation goes here ...
 
-This module was built by <YOUR NAME HERE> and <YOUR NAME HERE>.
+Area.convert_[input unit]_to_[desired unit]([number])
+
+Example:
+
+Area.convert_m_to_mm(1) #=> 1000
+
+This module was built by Carlos Diaz-Padron.
 
 
 ### Note on tests ###

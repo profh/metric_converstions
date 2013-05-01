@@ -3,10 +3,6 @@ module MetricConversions
     metric_to_english_factors = %w[.04 .4 3.3 1.1 .6]
     english_to_metric_factors = %w[2.5 30 .9 1.6] 
 
-    def is_metric?(unit)
-        return (unit == "mm" || unit == "cm" || unit == "m" || unit == "km")
-    end
-
     if(is_metric?(from))
         cm = self.to_cm
         if(is_metric?(to))
@@ -41,6 +37,11 @@ module MetricConversions
     #       # convert inches to desired english value
 
     #     end
+    end
+  end
+
+  def is_metric?(unit)
+        return (unit == "mm" || unit == "cm" || unit == "m" || unit == "km")
     end
 
   def to_inches(from)

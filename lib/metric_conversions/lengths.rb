@@ -1,77 +1,117 @@
 module MetricConversions
-  def convert(from, to)
-    metric_to_english_factors = %w[.04 .4 3.3 1.1 .6]
-    english_to_metric_factors = %w[2.5 30 .9 1.6] 
 
-    if(is_metric?(from))
-        cm = self.to_cm
-        if(is_metric?(to))
-          if(to == "mm")
-            cm.to_mm
-          elsif(to == "cm")
-            cm
-          elsif(to == "m")
-            cm.to_m
-          elsif(to == "km")
-            cm.to_km
-          end
-        else
-            inches = cm.to_inches("cm")
-            if(to == "in")
-              inches
-            elsif(to == "ft")
-              inches.to_ft
-            elsif(to == "yd")
-              inches.to_yd
-            elsif(to == "mi")
-              inches.to_mi
-            end
-        end
-    # else
-    #     inches = self.to_inches(from)
-
-    #     if(is_metric?(to))
-    #       # convert inches to metric
-
-    #     else
-    #       # convert inches to desired english value
-
-    #     end
-    end
+  def round_2
+    (self * 100).round / 100.0
   end
 
   def is_metric?(unit)
-        return (unit == "mm" || unit == "cm" || unit == "m" || unit == "km")
+    return (unit == "mm" || unit == "cm" || unit == "m" || unit == "km")
+  end
+
+  def convert(from, to)
+    if(is_metric?(from))
+        cm = self.to_cm(from)
+        if(is_metric?(to))
+          if(to == "mm")
+            cm.to_mm.round_2
+
+          elsif(to == "cm")
+            cm.round_2
+
+          elsif(to == "m")
+            cm.to_m.round_2
+
+          elsif(to == "km")
+            cm.to_km.round_2
+          end
+
+        else
+          inches = cm.to_inches("cm")
+          if(to == "in")
+            inches.round_2
+
+          elsif(to == "ft")
+            inches.to_ft.round_2
+
+          elsif(to == "yd")
+            inches.to_yd.round_2
+
+          elsif(to == "mi")
+            inches.to_mi.round_2
+          end
+        end
+
+    else
+        inches = self.to_inches(from)
+
+        if(is_metric?(to))
+          cm = inches.to_cm("in")
+        
+          if(to == "mm")
+            cm.to_mm.round_2
+
+          elsif(to == "cm")
+            cm.round_2
+
+          elsif(to == "m")
+            cm.to_m.round_2
+
+          elsif(to == "km")
+            cm.to_km.round_2
+          end
+
+        else
+          if(to == "in")
+            inches.round_2
+
+          elsif(to == "ft")
+            inches.to_ft.round_2
+
+          elsif(to == "yd")
+            inches.to_yd.round_2
+            
+          elsif(to == "mi")
+            inches.to_mi.round_2
+          end
+        end
     end
+  end
 
   def to_inches(from)
     if(from == "ft")
-        self * 12.0
+      self * 12.0
+
     elsif(from == "yd")
-        self * 36.0
+      self * 36.0
+
     elsif(from == "mi")
-        self * 12.0 * 5280
+      self * 12.0 * 5280
 
     elsif(from == "cm")
-        self / 2.5
+      self / 2.54
+
+    elsif(from == "in")
+      self
+
     end
   end
 
   def to_cm(from)
     if(from == "mm")
-        self / 1000.0
+      self / 10.0
 
     elsif(from == "cm")
-        self / 100.0
+      self
 
     elsif(from == "m")
-        self * 1.0
+      self / 100.0
 
     elsif(from == "in")
-        self * 2.5
+      self * 2.54
 
     else
-        self * 1000.0
+      self * 1000.0
+
     end
   end
 

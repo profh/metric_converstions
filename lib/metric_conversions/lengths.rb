@@ -11,6 +11,7 @@ module MetricConversions
   def convert(from, to)
     if(is_metric?(from))
         cm = self.to_cm(from)
+
         if(is_metric?(to))
           if(to == "mm")
             cm.to_mm.round_2
@@ -27,6 +28,7 @@ module MetricConversions
 
         else
           inches = cm.to_inches("cm")
+
           if(to == "in")
             inches.round_2
 
@@ -104,13 +106,13 @@ module MetricConversions
       self * 1.0
 
     elsif(from == "m")
-      self / 100.0
+      self * 100.0
 
     elsif(from == "in")
       self * 2.54
 
     else
-      self * 1000.0
+      self * 100000.0
 
     end
   end
@@ -120,15 +122,15 @@ module MetricConversions
   end
 
   def to_yd
-    self.to_feet / 3.0
+    self.to_ft / 3.0
   end
 
   def to_mi
-    self.to_feet / 5280.0
+    self.to_ft / 5280.0
   end
 
   def to_mm
-    self * 100.0
+    self * 10.0
   end
 
   def to_m
@@ -136,7 +138,7 @@ module MetricConversions
   end
 
   def to_km
-    self / 10000.0
+    self / 100000.0
   end
 end
 

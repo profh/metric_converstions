@@ -91,7 +91,7 @@ module MetricConversions
       self / 2.54
 
     elsif(from == "in")
-      self
+      self * 1.0
 
     end
   end
@@ -101,7 +101,7 @@ module MetricConversions
       self / 10.0
 
     elsif(from == "cm")
-      self
+      self * 1.0
 
     elsif(from == "m")
       self / 100.0

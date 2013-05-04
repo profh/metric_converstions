@@ -27,4 +27,28 @@ describe "lengths conversions" do
     assert_equal(321868.8, 2.convert("mi", "cm"))
   end
   
+  it "should return in mm the number initially given in ft" do
+    assert_equal(609.6, 2.convert("ft", "mm"))
+  end
+  
+  it "should return in meters the number initially given in yards" do
+    assert_equal(1.83, 2.convert("yd", "m"))
+  end
+  
+  it "should return in km the number initially given in miles" do
+    assert_equal(3.22, 2.convert("mi", "km"))
+  end
+  
+  it "should return in yards the number initially given in km" do
+    assert_equal(2187.23, 2.convert("km", "yd"))
+  end
+  
+  it "should return in ft the number initially given in m" do
+    assert_equal(6.56, 2.convert("m", "ft"))
+  end
+  
+  it "should return in inches the number initially given in mm" do
+    assert_equal(17.01, 432.convert("mm", "in"))
+  end
+  
 end

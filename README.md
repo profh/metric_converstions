@@ -32,6 +32,9 @@ There are currently four submodules to this gem:
 ### Lengths ###
 This gem enables you to convert between typical metric and US Standard units. By calling .convert on a number and passing in two arguments, units from and units to, you can convert the given number into its equivalent in the "to" units. 
 
+Example:
+250.convert("in", "cm")
+
 This module was built by Rachel Crown and Dylan Corwin.
 
 
